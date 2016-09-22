@@ -39,7 +39,7 @@ class Tabitem extends Component {
 class Home extends Component {
   render() {
     return (
-      <View><Text>主页1</Text></View>
+      <View><Text>主页12</Text></View>
     )
   }
 }
