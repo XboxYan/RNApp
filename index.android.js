@@ -36,6 +36,22 @@ class Tabitem extends Component {
   }
 }
 
+class UserSet extends Component {
+  render() {
+    return (
+      <TouchableNativeFeedback
+        delayPressIn={0}
+        style={this.props.style}
+        background={TouchableNativeFeedback.Ripple('#38f') } >
+        <View style={styles.content}>
+          <Icon name={this.props.name} size={24} color='#666' />
+          <Text style={styles.tabText}>{this.props.title}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    )
+  }
+}
+
 class Home extends Component {
   render() {
     return (
@@ -63,7 +79,19 @@ class Movie extends Component {
 class Person extends Component {
   render() {
     return (
-      <View><Text>我的4</Text></View>
+      <ScrollView>
+        <View style={styles.usertop}>
+          <Icon name='face' size={80} color='#fff' />
+          <Text style={styles.username}>我的1</Text>
+        </View>
+        <View>
+          <View style={styles.content}>
+            <UserSet name="home" title="主页" />
+            <UserSet name="home" title="主页" />
+            <UserSet name="home" title="主页" />
+          </View>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -73,7 +101,7 @@ class App extends Component {
     super(props);
     this.onBackAndroid = this.onBackAndroid.bind(this);
     this.state = {
-      selectedTab: Home
+      selectedTab: Person
     }
   }
 
@@ -89,7 +117,7 @@ class App extends Component {
     }
   }
 
-  onBackAndroid(){
+  onBackAndroid() {
     if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
       return false;
     }
@@ -103,9 +131,7 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
-          <ScrollView>
-            <TabContent />
-          </ScrollView>
+          <TabContent />
         </View>
         <View style={styles.tabbar}>
           <Tabitem style={styles.tabitem} name="home" title="主页" selected={TabContent === Home} onPress={() => this.setState({ selectedTab: Home }) } />
@@ -138,6 +164,18 @@ const styles = StyleSheet.create({
   tabText: {
     fontSize: 10,
     color: '#666'
+  },
+  usertop: {
+    height: 200,
+    backgroundColor: '#1f8eff',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  username: {
+    color: '#fff',
+    fontSize: 18,
+    marginTop: 10
   }
 });
 
