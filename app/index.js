@@ -43,7 +43,7 @@ class Index extends Component {
     super(props);
     this.onBackAndroid = this.onBackAndroid.bind(this);
     this.state = {
-      selectedTab: Person
+      selectedTab: Home
     }
   }
 

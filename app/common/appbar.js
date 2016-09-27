@@ -24,7 +24,7 @@ class AppBar extends Component {
           background={TouchableNativeFeedback.Ripple('#ccc') } >
           <View style={styles.btn}><Icon name='arrow-back' size={24} color='#fff' /></View>
         </TouchableNativeFeedback>
-        <Text style={styles.apptitle}>{this.props.title}</Text>
+        <Text style={styles.apptitle}>{this.props.title||''}</Text>
         <View style={styles.btn}></View>
       </View>
     );

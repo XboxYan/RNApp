@@ -12,6 +12,7 @@ import {
   StyleSheet
 } from 'react-native';
 import SlideView from './slideview';
+import LatestList from './listview';
 
 let LATEST_URL = 'http://news-at.zhihu.com/api/4/news/latest';
 
@@ -21,16 +22,18 @@ class Home extends Component {
   }
 
   render() {
+    const { navigator } = this.props;
     return (
       <View style={styles.content}>
         <View style={styles.top}><Text style={styles.toptext}>主页</Text></View>
         <ScrollView style={styles.content}>
           <View  style={styles.slideview}>
             <SlideView
+              navigator={navigator}
               sourse = {LATEST_URL}
-              isLoop={true}
-              />
+              isLoop={true} />
           </View>
+          <LatestList sourse = {LATEST_URL} navigator={navigator}  />
         </ScrollView>
       </View>
     )
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   slideview: {
-    height: 200
+    height: 200,
   }
 });
 
